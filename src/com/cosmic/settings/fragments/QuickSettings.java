@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.UserHandle;
 import android.content.ContentResolver;
+import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
@@ -25,13 +26,16 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.cosmic.settings.preferences.CustomSeekBarPreference;
+import com.cosmic.settings.preferences.Utils;
 
 public class QuickSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String QS_PANEL_ALPHA = "qs_panel_alpha";
+    private static final String QS_TILE_TINTING = "qs_tile_tinting_enable";
 
+    private SwitchPreference mEnableQsTileTinting;
     private ListPreference mSmartPulldown;
     private CustomSeekBarPreference mQsPanelAlpha;
 
@@ -56,6 +60,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                 Settings.System.QS_PANEL_BG_ALPHA, 255, UserHandle.USER_CURRENT);
         mQsPanelAlpha.setValue(qsPanelAlpha);
         mQsPanelAlpha.setOnPreferenceChangeListener(this);
+
+	//QS Tile Theme
+        mEnableQsTileTinting = (SwitchPreference) findPreference(QS_TILE_TINTING);
+        mEnableQsTileTinting.setChecked(Settings.System.getInt(resolver,
+                Settings.System.QS_TILE_TINTING_ENABLE, 0) == 1);
+        mEnableQsTileTinting.setOnPreferenceChangeListener(this);
         }
 
     @Override
@@ -71,6 +81,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.QS_PANEL_BG_ALPHA, bgAlpha,
                     UserHandle.USER_CURRENT);
+        } else if (preference == mEnableQsTileTinting) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.QS_TILE_TINTING_ENABLE, value ? 1 : 0);
+             Utils.restartSystemUi(getContext());
             return true;
         }
 
