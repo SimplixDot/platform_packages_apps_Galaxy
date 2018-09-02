@@ -81,6 +81,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.QS_PANEL_BG_ALPHA, bgAlpha,
                     UserHandle.USER_CURRENT);
+            return true;
         } else if (preference == mEnableQsTileTinting) {
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getContentResolver(),

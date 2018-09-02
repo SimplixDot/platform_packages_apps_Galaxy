@@ -79,6 +79,13 @@
             android:title="@string/themes_title"
             android:fragment="com.cosmic.settings.fragments.ThemesFragment"
             android:icon="@drawable/ic_cosmic_themes"/>
+            
+        <!-- Themes Settings -->
+        <Preference
+            android:key="settings_blur_cat"
+            android:title="@string/"
+            android:fragment="com.cosmic.settings.fragments.BlurSettings"
+            android:icon="@drawable/ic_blur"/>
 
         <!-- Misc -->
         <Preference
