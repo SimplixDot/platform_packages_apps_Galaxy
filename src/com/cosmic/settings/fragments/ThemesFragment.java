@@ -97,6 +97,23 @@ public class ThemesFragment extends SettingsPreferenceFragment implements Prefer
         } else {
             mIconTint.setEnabled(false);
         }
+        
+        if (isSimplix()) {
+        	if (valueIndex != 3) {
+        		Settings.System.putInt(getContentResolver(), Settings.System.SYSTEM_THEME_STYLE, 3);
+        	}
+        	mSystemThemeColor.setEnabled(false);
+        	mSystemThemeStyle.setEnabled(false);
+        } else {
+        	mSystemThemeColor.setEnabled(true);
+        	mSystemThemeStyle.setEnabled(true);
+        }
+        
+        if (isPixel() || isSimplix()) {
+        	mSystemThemeColor.setEnabled(false);
+        } else {
+        	mSystemThemeColor.setEnabled(true);
+        }
     }
 
     @Override
@@ -145,6 +162,34 @@ public class ThemesFragment extends SettingsPreferenceFragment implements Prefer
         } else {
             mIconTint.setEnabled(false);
         }
+        
+        int systemThemeStyle = Settings.System.getInt(getContentResolver(),
+                Settings.System.SYSTEM_THEME_STYLE, 0);
+        int valueIndex = mSystemThemeStyle.findIndexOfValue(String.valueOf(systemThemeStyle));
+        
+        if (isSimplix()) {
+        	if (valueIndex != 3) {
+        		Settings.System.putInt(getContentResolver(), Settings.System.SYSTEM_THEME_STYLE, 3);
+        	}
+        	mSystemThemeColor.setEnabled(false);
+        	mSystemThemeStyle.setEnabled(false);
+        } else {
+        	mSystemThemeColor.setEnabled(true);
+        	mSystemThemeStyle.setEnabled(true);
+        }
+        
+        if (isSimplix()) {
+        	mSystemThemeColor.setEnabled(false);
+        } else {
+        	mSystemThemeColor.setEnabled(true);
+        }
+        
+        if (isPixel()) {
+        	mSystemThemeColor.setEnabled(false);
+        } else {
+        	mSystemThemeColor.setEnabled(true);
+        }
+        
         return true;
 
     }
@@ -289,6 +334,28 @@ public class ThemesFragment extends SettingsPreferenceFragment implements Prefer
         }
         return (themeInfoDark != null && themeInfoDark.isEnabled()) ||
             (themeInfoBlack != null && themeInfoBlack.isEnabled());
+    }
+    
+    public boolean isSimplix() {
+    	OverlayInfo themeInfoSimplix = null;
+        try {
+            themeInfoSimplix = mOverlayService.getOverlayInfo("com.cosmic.overlay.base.stockfixed",
+                    UserHandle.myUserId());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return themeInfoSimplix != null && themeInfoSimplix.isEnabled();
+    }
+    
+    public boolean isPixel() {
+    	OverlayInfo themeInfoPixel = null;
+        try {
+            themeInfoPixel = mOverlayService.getOverlayInfo("com.cosmic.overlay.base.pixel",
+                    UserHandle.myUserId());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return themeInfoPixel != null && themeInfoPixel.isEnabled();
     }
 
     public static class OverlayManager {

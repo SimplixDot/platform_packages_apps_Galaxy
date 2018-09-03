@@ -80,10 +80,10 @@
             android:fragment="com.cosmic.settings.fragments.ThemesFragment"
             android:icon="@drawable/ic_cosmic_themes"/>
             
-        <!-- Themes Settings -->
+        <!-- Blur Settings -->
         <Preference
-            android:key="settings_blur_cat"
-            android:title="@string/"
+            android:key="cosmic_blur_settings"
+            android:title="@string/settings_blur_cat"
             android:fragment="com.cosmic.settings.fragments.BlurSettings"
             android:icon="@drawable/ic_blur"/>
 
