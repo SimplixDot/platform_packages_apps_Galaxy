@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  Copyright (C) 2017 The ABC rom
+	  Copyright (C) 2018 Nitrogen OS
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
@@ -15,4 +16,6 @@
 <resources>
     <!-- Shortcut picker -->
     <dimen name="shortcut_picker_left_padding">70dip</dimen>
+    
+    <dimen name="fab_line_width">2dp</dimen>
 </resources>
