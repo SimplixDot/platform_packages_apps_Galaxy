@@ -31,7 +31,17 @@
             android:title="@string/global_actions_title"
             android:summary="@string/global_actions_summary"
             android:fragment="com.cosmic.settings.globalactions.GlobalActionsSettings" />
-     </PreferenceCategory>
 
+        <Preference
+            android:key="expanded_desktop"
+            android:title="@string/expanded_desktop_pref_title"
+            android:fragment="com.cosmic.settings.misc.ExpandedDesktopPreferenceFragment" />
+			
+		<com.cosmic.settings.preferences.SystemSettingSwitchPreference
+			android:key="fp_unlock_keystore"
+			android:title="@string/fp_unlock_keystore_title"
+			android:summary="@string/fp_unlock_keystore_summary"
+			android:defaultValue="false" />
+     </PreferenceCategory>
 
 </PreferenceScreen>
