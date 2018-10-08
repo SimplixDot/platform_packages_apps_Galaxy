@@ -24,6 +24,27 @@
             android:title="@string/display_settings_title"
             android:fragment="com.cosmic.settings.fragments.DisplaySettings"
             android:icon="@drawable/ic_cosmic_display"/>-->
+            
+        <!-- HW keys -->
+        <Preference
+        	android:key="cosmic_button_settings"
+        	android:title="@string/button_settings_title"
+        	android:fragment="com.cosmic.settings.fragments.ButtonSettings" 
+        	android:icon="@drawable/ic_cosmic_button"/>
+        	
+        <!-- Lock screen -->
+        <Preference
+        	android:key="cosmic_lockscreen_settings"
+        	android:title="@string/lockscreen_title"
+        	android:fragment="com.cosmic.settings.fragments.LockscreenSettings"
+        	android:icon="@drawable/ic_cosmic_lockscreen"/>
+ 	    
+ 	    <!-- Navigation bar -->
+ 	    <Preference
+ 	    	android:key="cosmic_navbar_settings"
+ 	    	android:title="@string/navbar_settings_title"
+ 	    	android:fragment="com.cosmic.settings.fragments.NavbarSettings"
+ 	    	android:icon="@drawable/ic_cosmic_navbar"/>
 
         <!-- Gestures -->
         <Preference
