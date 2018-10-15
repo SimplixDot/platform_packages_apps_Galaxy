@@ -159,4 +159,32 @@ Note: at your own risk!"</string>
     <string name="clock_date_format">Date format</string>
     <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
     <string name="clock_date_string_edittext_summary">Enter string</string>
+
+    <!-- Weather -->
+    <string name="weather_title">Weather</string>
+    <string name="weather_summary">Show current weather on keyguard or statusbar</string>
+
+    <!-- Weather - OmniJaws Settings -->
+    <string name="weather_config_title">Weather service</string>
+    <string name="weather_config_summary">System service settings</string>
+    <string name="header_weather_title">Header view weather</string>
+    <string name="header_weather_summary">Enable notification panel header weather display</string>
+    <string name="weather_icon_pack_title">Condition icon pack</string>
+    <string name="weather_icon_pack_note">Note\u003a you can install new icon packs from play store by searching for \"Chronus icons\"</string>
+
+    <!-- Status bar weather -->
+    <string name="statusbar_weather_title">Statusbar weather</string>
+    <string name="statusbar_weather_summary">Disabled</string>
+    <string name="statusbar_weather_dialog_title">Statusbar Weather</string>
+    <string name="status_bar_weather_hidden">Disabled</string>
+    <string name="status_bar_temperature_image_show_scale">Temp with image and scale</string>
+    <string name="status_bar_temperature_image_hide_scale">Temp with image</string>
+    <string name="status_bar_temperature_show_scale_hide_image">Temp with scale</string>
+    <string name="status_bar_temperature_hide_scale_hide_image">Temp</string>
+    <string name="status_bar_show_image">Image</string>
+
+    <!-- Lockscreen weather settings -->
+    <string name="lockscreen_weather_title">Lockscreen weather</string>
+    <string name="lockscreen_weather_summary">Show current weather condition and temperature on lockscreen</string>
+    <string name="lockscreen_items_aod_info_title">This visibility configuration also applies to the ambient display</string>
 </resources>
