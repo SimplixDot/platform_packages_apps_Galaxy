@@ -30,10 +30,12 @@ public class Gestures extends GestureSettings {
     private static final String TAG = "Gestures";
     private static final String DOUBLE_TAP_STATUS_BAR_TO_SLEEP = "double_tap_sleep_gesture";
     private static final String DOUBLE_TAP_LOCK_SCREEN_TO_SLEEP = "double_tap_sleep_anywhere";
+    private static final String SWIPE_FP_DISMISS = "gesture_swipe_dismiss_fingerprint";
 
     private ContentResolver mContentResolver;
     private SwitchPreference mDoubleTapStatusBarToSleep;
     private SwitchPreference mDoubleTapLockScreenToSleep;
+    private SwitchPreference mFpSwipeDismiss;
 
     @Override
     public int getMetricsCategory() {
@@ -46,6 +48,7 @@ public class Gestures extends GestureSettings {
         mContentResolver = getActivity().getContentResolver();
         mDoubleTapStatusBarToSleep = (SwitchPreference) findPreference(DOUBLE_TAP_STATUS_BAR_TO_SLEEP);
         mDoubleTapLockScreenToSleep = (SwitchPreference) findPreference(DOUBLE_TAP_LOCK_SCREEN_TO_SLEEP);
+        mFpSwipeDismiss = (SwitchPreference) findPreference(SWIPE_FP_DISMISS);
         updatePreferences();
     }
 
@@ -57,6 +60,9 @@ public class Gestures extends GestureSettings {
         } else if (mDoubleTapLockScreenToSleep == preference) {
             updateDoubleTapLockScreenToSleep(true);
             return true;
+        } else if (mFpSwipeDismiss == preference) {
+        	updateFpSwipe(true);
+        	return true;
         }
         return super.onPreferenceTreeClick(preference);
     }
@@ -86,9 +92,22 @@ public class Gestures extends GestureSettings {
                 0, UserHandle.USER_CURRENT) == 1);
         mDoubleTapLockScreenToSleep.setChecked(isDoubleTapLockScreenToSleep);
     }
+    
+    private void updateFpSwipe(boolean clicked) {
+        if (clicked) {
+            Settings.Secure.putInt(mContentResolver,
+                    Settings.Secure.FP_SWIPE_TO_DISMISS_NOTIFICATIONS,
+                    (mFpSwipeDismiss.isChecked() ? 1 : 0));
+        }
+        boolean isFpSwipeDismiss = (Settings.Secure.getInt(
+                mContentResolver, Settings.Secure.FP_SWIPE_TO_DISMISS_NOTIFICATIONS,
+                0) == 1);
+        mFpSwipeDismiss.setChecked(isFpSwipeDismiss);
+    }
 
     private void updatePreferences() {
         updateDoubleTapStatusBarToSleep(false);
         updateDoubleTapLockScreenToSleep(false);
+        updateFpSwipe(false);
     }
 }
