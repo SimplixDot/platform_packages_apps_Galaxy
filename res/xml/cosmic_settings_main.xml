@@ -25,6 +25,13 @@
             android:fragment="com.cosmic.settings.fragments.DisplaySettings"
             android:icon="@drawable/ic_cosmic_display"/>-->
             
+        <!-- Statusbar -->
+        <Preference
+        	android:key="cosmic_statusbar_settings"
+        	android:title="@string/statusbar_title"
+        	android:fragment="com.cosmic.settings.fragments.StatusbarSettings"
+        	android:icon="@drawable/ic_cosmic_statusbar"/>
+            
         <!-- HW keys -->
         <Preference
         	android:key="cosmic_button_settings"
@@ -38,6 +45,13 @@
         	android:title="@string/lockscreen_title"
         	android:fragment="com.cosmic.settings.fragments.LockscreenSettings"
         	android:icon="@drawable/ic_cosmic_lockscreen"/>
+        	
+        <!-- Weather
+        <Preference
+        	android:key="cosmic_weather_settings"
+        	android:title="@string/weather_title"
+        	android:fragment="com.cosmic.settings.fragments.WeatherSettings"
+        	android:icon="@drawable/ic_settings_weather"/> -->
  	    
  	    <!-- Navigation bar -->
  	    <Preference
